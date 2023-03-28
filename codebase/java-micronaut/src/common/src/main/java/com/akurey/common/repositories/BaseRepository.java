@@ -11,11 +11,7 @@ import javax.persistence.StoredProcedureQuery;
 
 import org.hibernate.JDBCException;
 
-import com.akurey.common.exceptions.AKBadRequestException;
-import com.akurey.common.exceptions.AKException;
-import com.akurey.common.exceptions.AKNotFoundException;
-import com.akurey.common.exceptions.AKUnauthenticatedException;
-import com.akurey.common.exceptions.AKUnauthorizedException;
+import com.akurey.common.exceptions.*;
 import com.akurey.common.exceptions.errors.CommonError;
 
 public abstract class BaseRepository {
@@ -29,8 +25,7 @@ public abstract class BaseRepository {
 
       storedProcedure.execute();
 
-    }
-    catch (PersistenceException e) {
+    } catch (PersistenceException e) {
       throw createHEDBException(e);
     }
   }
@@ -48,11 +43,9 @@ public abstract class BaseRepository {
       storedProcedure.execute();
 
       return (TResult) storedProcedure.getSingleResult();
-    }
-    catch (NoResultException e) {
+    } catch (NoResultException e) {
       throw new AKNotFoundException(e);
-    }
-    catch (PersistenceException e) {
+    } catch (PersistenceException e) {
       throw createHEDBException(e);
     }
   }
@@ -69,8 +62,7 @@ public abstract class BaseRepository {
       storedProcedure.execute();
 
       return storedProcedure.getResultList();
-    }
-    catch (PersistenceException e) {
+    } catch (PersistenceException e) {
       throw createHEDBException(e);
     }
   }
@@ -79,7 +71,7 @@ public abstract class BaseRepository {
       Class<? extends BaseSPResult> resultClass) throws AKException {
 
     if (!isStoredProcedure(entityManager, spName)) {
-      throw new AKException(CommonError.DB_EXECUTION_ERROR);
+      throw new AKDatabaseException(CommonError.DB_EXECUTION_ERROR);
     }
 
     StoredProcedureQuery storedProcedure = createStoredProcedureQuery(entityManager, spName, resultClass);
@@ -95,14 +87,10 @@ public abstract class BaseRepository {
 
   private StoredProcedureQuery createStoredProcedureQuery(EntityManager entityManager, String spName,
       Class<?> resultClass) {
-    StoredProcedureQuery storedProcedure;
-    if (resultClass != null) {
-      storedProcedure = entityManager.createStoredProcedureQuery(spName, resultClass);
+    if (resultClass == null) {
+      return entityManager.createStoredProcedureQuery(spName);
     }
-    else {
-      storedProcedure = entityManager.createStoredProcedureQuery(spName);
-    }
-    return storedProcedure;
+    return entityManager.createStoredProcedureQuery(spName, resultClass);
   }
 
   private void registerStoredProcedureParameters(List<SPParam> params, StoredProcedureQuery storedProcedure) {
@@ -113,7 +101,6 @@ public abstract class BaseRepository {
   }
 
   private AKException createHEDBException(PersistenceException e) {
-    AKException exception;
     String returnMessage = null;
     int errorCode = 0;
 
@@ -125,31 +112,29 @@ public abstract class BaseRepository {
         if ((errorCode >= 50000) && (errorCode <= 59999)) {
           returnMessage = sqlException.getMessage();
         }
-      }
-      catch (Exception ex) {
+      } catch (Exception ex) {
         returnMessage = null;
       }
     }
 
-    if (returnMessage != null) {
-      if ((errorCode >= 50000) && (errorCode <= 50999)) {
-        exception = new AKBadRequestException(returnMessage, e, errorCode);
-      }
-      else if ((errorCode >= 51000) && (errorCode <= 51999)) {
-        exception = new AKUnauthenticatedException(returnMessage, e, errorCode);
-      }
-      else if ((errorCode >= 53000) && (errorCode <= 53999)) {
-        exception = new AKUnauthorizedException(returnMessage, e, errorCode);
-      }
-      else {
-        exception = new AKException(returnMessage, e, errorCode);
-      }
-    }
-    else {
-      exception = new AKException(CommonError.DB_EXECUTION_ERROR, e);
+    if (returnMessage == null) {
+      return new AKDatabaseException(CommonError.DB_EXECUTION_ERROR, e);
     }
 
-    return exception;
+    if (errorCode < 50000 || errorCode >= 54000) {
+      return new AKDatabaseException(returnMessage, e, errorCode);
+    }
+
+    if (errorCode < 51000) {
+      return new AKBadRequestException(returnMessage, e, errorCode);
+    }
+    if (errorCode < 52000) {
+      return new AKUnauthenticatedException(returnMessage, e, errorCode);
+    }
+    if (errorCode < 53000) {
+      return new AKDatabaseException(returnMessage, e, errorCode);
+    }
+    return new AKUnauthorizedException(returnMessage, e, errorCode);
   }
 
 }

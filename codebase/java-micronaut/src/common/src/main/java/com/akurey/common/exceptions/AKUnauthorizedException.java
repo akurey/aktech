@@ -2,6 +2,8 @@ package com.akurey.common.exceptions;
 
 import com.akurey.common.exceptions.errors.UnauthorizedError;
 
+import io.micronaut.http.HttpStatus;
+
 public class AKUnauthorizedException extends AKException {
 
   private static final long serialVersionUID = 1L;
@@ -20,5 +22,10 @@ public class AKUnauthorizedException extends AKException {
 
   public AKUnauthorizedException(String message, Throwable cause, int errorCode) {
     super(message, cause, errorCode);
+  }
+
+  @Override
+  public HttpStatus getHttpStatus() {
+    return HttpStatus.FORBIDDEN;
   }
 }

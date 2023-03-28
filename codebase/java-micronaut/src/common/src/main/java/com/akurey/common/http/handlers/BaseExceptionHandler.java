@@ -1,10 +1,6 @@
 package com.akurey.common.http.handlers;
 
-import com.akurey.common.exceptions.AKBadRequestException;
 import com.akurey.common.exceptions.AKException;
-import com.akurey.common.exceptions.AKNotFoundException;
-import com.akurey.common.exceptions.AKUnauthenticatedException;
-import com.akurey.common.exceptions.AKUnauthorizedException;
 import com.akurey.common.exceptions.errors.BadRequestError;
 import com.akurey.common.exceptions.errors.CommonError;
 import com.akurey.common.logs.AKLogger;
@@ -23,9 +19,8 @@ public abstract class BaseExceptionHandler {
     RestResponse<?> response = new RestResponse<>();
 
     response.setErrorResponse(CommonError.NOT_HANDLED_ERROR.getCode(), CommonError.NOT_HANDLED_ERROR.getMessage());
-    HttpStatus status = HttpStatus.INTERNAL_SERVER_ERROR;
 
-    return HttpResponse.status(status).body(response);
+    return HttpResponse.status(HttpStatus.INTERNAL_SERVER_ERROR).body(response);
   }
 
   protected HttpResponse<RestResponse<?>> buildExceptionResponse(AKException e, Object request) {
@@ -35,20 +30,7 @@ public abstract class BaseExceptionHandler {
     RestResponse<?> response = new RestResponse<>();
     response.setErrorResponse(e.getErrorCode(), e.getMessage());
 
-    HttpStatus status;
-    if (e instanceof AKBadRequestException) {
-      status = HttpStatus.BAD_REQUEST;
-    } else if (e instanceof AKUnauthenticatedException) {
-      status = HttpStatus.UNAUTHORIZED;
-    } else if (e instanceof AKUnauthorizedException) {
-      status = HttpStatus.FORBIDDEN;
-    } else if (e instanceof AKNotFoundException) {
-      status = HttpStatus.NOT_FOUND;
-    } else {
-      status = HttpStatus.INTERNAL_SERVER_ERROR;
-    }
-
-    return HttpResponse.status(status).body(response);
+    return HttpResponse.status(e.getHttpStatus()).body(response);
   }
 
   protected HttpResponse<RestResponse<?>> handleBadRequest(HttpRequest<?> request, Exception exception,
