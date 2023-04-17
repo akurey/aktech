@@ -82,7 +82,7 @@ then finally write back the pdf to disk, buffer or send it as an http response.
 
 ## comparing git tools
 
-in just a 5-minute video, Fabricio will compare GitHub CLI and GUI. You'll have the opportunity to decide which environment is more productive with its fast actions and keyboard shortcuts. Additionally, you'll gain a better understanding of conflicts and what your team members are working on. Both options have their strengths, but which one will give you a wider project perspective? Watch and find out!
+in just a 5-minute video, Fabricio will compare two git UI tool. You'll have the opportunity to decide which environment is more productive with its fast actions and keyboard shortcuts. Additionally, you'll gain a better understanding of conflicts and what your team members are working on. Both options have their strengths, but which one will give you a wider project perspective? Watch and find out!
 
 [video of comparing git tools](https://1drv.ms/v/s!ApqDVCYL8CG8joowc-zZRIVhSPIqUQ?e=Gp9Eja)
 
