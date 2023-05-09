@@ -13,10 +13,76 @@
 ### **react**
 **1. Higher-Order Components.** It’s an advanced technique in React which allows reusing component logic inside the render method.For example, we might need to show some components when the user is logged in. To check this, you need to add the same code with each component. Here comes the use of the Higher-Order Component where the logic to check the user is logged in and keep your code under one app component. While the other components are wrapped inside this
 
+HOC example: using a HOC to show a placeholder while data is ready to being fetched
+Component to be wrapped:
+
+```ts
+//List.js
+const List = (props) => {
+  const { items } = props;
+  if (!items || !items.length) {return <p>No items to show</p>};
+  const listItems = items.map(({id, full_name}) => {
+        return <li key={id}>{full_name}</li>;
+      })
+  return (
+    <ul>
+      {listItems}
+    </ul>
+  );
+};
+HOC (naming convention withXXXXX):
+//withLoading.js
+const WithLoading = (Component) => {
+  return function WihLoadingComponent({ isLoading, ...props }) {
+    if (!isLoading) return <Component {...props} />;
+    return <p>Please wait, fetching data...</p>;
+  };
+}
+Usage:
+//app.js
+import List from './components/List.js';
+import WithLoading from './components/withLoading.js';
+
+const ListWithLoading = WithLoading(List);
+
+const App = () =>  {  
+  
+  // .
+  // .
+  // get Items Asynchronously
+  // .
+  // .
+  
+  return <ListWithLoading isLoading={loading}
+        items={items}
+      />
+}
+
+```
+
 **2. Folder Layout.** Group the file per type. In this, the same type of files is kept under one folder. 
--- aqui va imagen --
+
+<img src="/assets/images/folder layout react.png" width=50% height=50%> 
 
 **3. Dynamic Rendering with && and the Ternary Operator.** In React, it is possible to perform conditional renderings the same as a variable declaration. 
+
+```ts
+import VerifiedIcon from './components/VerifiedIcon.js';
+
+const UserMessage = ({name, isVerified}) => {
+  
+  const greetingMsg = name ?
+        `Hello ${name}, welcome back!`:
+        'Hi there, please log in';
+  
+  return (
+    <div>
+      <span>{greetingMsg}</span>
+      <span>{isVerified && <VerifiedIcon/>}</span>
+    </div>
+  )
+}
+```
 
 ### **node**
 **1. Use Const Over Let, Do Not Use Var.** Const variables assigned cannot be changed, this will help you prevent the use of a single variable multiple times so that way we can keep our code clean. In some scenarios where we need to re-assign variables, we will use the let keyword.
@@ -35,9 +101,55 @@
 ### **python**
 **1. List Comprehension:** With this implementation you can avoid to use a specific loop.
 
+```py
+programming_languages = ["java", "c", "python", "javascript", "go", "sql", "c#"]
+
+# Syntax: new_list = [expression for item in iterable if condition == True]
+new_list = [x for x in programming_languages if "a" in x]
+
+print(new_list)
+```
+
 **2. Slicing a list:** this is very important when you need to get data from specific list.
 
+```py
+new_list = [50, 70, 30, 20, 90, 10, 50]
+ 
+# Syntax: lst[ Initial : End : IndexJump ]
+print(new_list[1:5])
+print(new_list[-7:-1]) # using negative indexes
+print(new_list[::2]) # only jump indexes
+print(new_list[::]) # whole list
+print(new_list[::-1]) # reverse list
+```
+
+new_list = [50, 70, 30, 20, 90, 10, 50]
+print(new_list[1:5])
+[70, 30, 20, 90]
+print(new_list[-7:-1])
+[50, 70, 30, 20, 90, 10]
+print(new_list[::2])
+[50, 30, 90, 50]
+print(new_list[::])
+[50, 70, 30, 20, 90, 10, 50]
+print(new_list[::-1])
+[50, 10, 90, 20, 30, 70, 50]
+
+
 **3. Use testing:**  Testing is fundamental for each project, for example use pytest, is an open-source testing framework that is possibly on of the most widely used Python testing frameworks out there, this library is full recommended for unit test.
+
+```py
+def capital_case(x):
+    return x.capitalize()
+
+def test_capital_case():
+    assert capital_case('semaphore') == 'Semaphore'
+
+def test_raises_exception_on_non_string_arguments():
+    with pytest.raises(TypeError):
+        capital_case(9)
+```
+
 
 # procedures
 
