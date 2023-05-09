@@ -37,7 +37,8 @@ const List = (props) => {
     </ul>
   );
 };
-HOC (naming convention withXXXXX):
+ 
+HOC (naming convention withXXXXX): 
 //withLoading.js
 const WithLoading = (Component) => {
   return function WihLoadingComponent({ isLoading, ...props }) {
@@ -45,6 +46,7 @@ const WithLoading = (Component) => {
     return <p>Please wait, fetching data...</p>;
   };
 }
+
 Usage:
 //app.js
 import List from './components/List.js';
@@ -69,7 +71,7 @@ const App = () =>  {
 
 **2. Folder Layout.** Group the file per type. In this, the same type of files is kept under one folder. 
 
-<img src="/assets/images/folder layout react.png" width=50% height=50%> 
+<img src="/assets/images/folder layout react.png" width=35% height=35%> 
 
 **3. Dynamic Rendering with && and the Ternary Operator.** In React, it is possible to perform conditional renderings the same as a variable declaration. 
 
@@ -121,27 +123,25 @@ print(new_list)
 
 ```py
 new_list = [50, 70, 30, 20, 90, 10, 50]
- 
-# Syntax: lst[ Initial : End : IndexJump ]
-print(new_list[1:5])
-print(new_list[-7:-1]) # using negative indexes
-print(new_list[::2]) # only jump indexes
-print(new_list[::]) # whole list
-print(new_list[::-1]) # reverse list
-```
 
-new_list = [50, 70, 30, 20, 90, 10, 50]
+# Syntax: lst[ Initial : End : IndexJump ]
+
 print(new_list[1:5])
 [70, 30, 20, 90]
+
 print(new_list[-7:-1])
 [50, 70, 30, 20, 90, 10]
+
 print(new_list[::2])
 [50, 30, 90, 50]
+
 print(new_list[::])
 [50, 70, 30, 20, 90, 10, 50]
+
 print(new_list[::-1])
 [50, 10, 90, 20, 30, 70, 50]
 
+```
 
 **3. Use testing:**  Testing is fundamental for each project, for example use pytest, is an open-source testing framework that is possibly on of the most widely used Python testing frameworks out there, this library is full recommended for unit test.
 
@@ -157,7 +157,7 @@ def test_raises_exception_on_non_string_arguments():
         capital_case(9)
 ```
 
-## are you aware of the akurey's code standards ##
+### are you aware of the akurey's code standards, check this out ###
 https://docs.google.com/document/d/1KcELLuCPPsFoOLEboEnL7FL_dlaVot6S/edit
 
 
