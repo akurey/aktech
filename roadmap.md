@@ -1,6 +1,10 @@
 # coding standards and practices
 
-**Use a linter**. Linting is a process where we run a program that analyses code for potential errors. Mostly, we use it for language-related issues. But it can also fix many other issues automatically – particularly code style.
+**Use a linter.** Linting is a process where we run a program that analyses code for potential errors. Mostly, we use it for language-related issues. But it can also fix many other issues automatically – particularly code style.
+
+**DRY your code.** You can achieve this by inspecting the code for patterns. If you find any, it’s possible you are repeating some code and there’s scope to eliminate duplication. A bit of rewriting might make it more concise.
+
+**Write tests for all code.** In any programming language, adequate testing ensures that any new code added to your project integrates well with existing code and does not break existing functionality. It is a good idea to write tests for any new component that you create. 
 
 ### **typescript**
 
@@ -9,6 +13,9 @@
 **2. Use let instead of var.** The use of let, prevents the redeclaration of a variable in the same scope. var, instead, is scoped to the immediate funcion body and not the immediate enclosing block, as let does.
 
 **3. Use const.** When declaring a “variable” whose value will not change, use const. This includes not only global constants, but values such as the parameter of a function, whose value not often changes
+
+**Use optional parameters.** Instead of creating overloads that add more parameters every time, create one single function with the necessary parameters as optional… except if you’re defining a callback
+
 
 ### **react**
 **1. Higher-Order Components.** It’s an advanced technique in React which allows reusing component logic inside the render method.For example, we might need to show some components when the user is logged in. To check this, you need to add the same code with each component. Here comes the use of the Higher-Order Component where the logic to check the user is logged in and keep your code under one app component. While the other components are wrapped inside this
@@ -149,6 +156,9 @@ def test_raises_exception_on_non_string_arguments():
     with pytest.raises(TypeError):
         capital_case(9)
 ```
+
+## are you aware of the akurey's code standards ##
+https://docs.google.com/document/d/1KcELLuCPPsFoOLEboEnL7FL_dlaVot6S/edit
 
 
 # procedures
