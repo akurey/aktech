@@ -8,10 +8,10 @@ In REST, the primary data representation is called resource. Having a consistent
 
 Any concept that might be the target of an author’s hypertext reference must fit within the definition of a resource. A resource is a conceptual mapping to a set of entities, not the entity that corresponds to the mapping at any particular point in time. REST provides 4 types of resources:
 
-- **collection:** plural nouns, */somecontext/users*
-- **document:** singular noun, */somecontext/users/{userid}*
-- **store**: plural noun inside a single document, */somecontext/users/{userid}/wishlists*
-- **controller**: verbs acting over a resource or document, */somecontext/users/{userid}/export*
+- **collection:** plural nouns, _/somecontext/users_
+- **document:** singular noun, _/somecontext/users/{userid}_
+- **store**: plural noun inside a single document, _/somecontext/users/{userid}/wishlists_
+- **controller**: verbs acting over a resource or document, _/somecontext/users/{userid}/export_
 
 Want to know more about REST guidelines and naming conventions
 
@@ -21,20 +21,22 @@ https://restfulapi.net/resource-naming/
 
 [watch the video](https://1drv.ms/v/s!ApqDVCYL8CG8jYgiFl4thvty4XZsSA?e=ZzMXAo)
 
-> msc. rodrigo nunez 
+> msc. rodrigo nunez
 
+## choosing a message broker to communicate microservices asynchronously
 
-## choosing a message broker to communicate microservices asynchronously 
+to communicate microservices asynchronously with each other, meaning without waiting for a response, suited for distributed systems, a message broker is required.
 
-to communicate microservices asynchronously with each other, meaning without waiting for a response, suited for distributed systems, a message broker is required. 
-
-when choosing a broker you should consider a few things: 
+when choosing a broker you should consider a few things:
 
 - Broker Scale — The number of messages sent per second in the system.
 - Data Persistency — The ability to recover messages.
-- Consumer Capability — Whether the broker is capable of managing one-to-one and/or one-to-many consumers. 
+- Consumer Capability — Whether the broker is capable of managing one-to-one and/or one-to-many consumers.
 
 ![](/assets/images/message%20broker.png)
 
-> msc. rodrigo nunez 
+> msc. rodrigo nunez
 
+## [Java Code Formatter](https://github.com/akurey/aktech/blob/master/tech-tips/java/intellij-format.xml)
+
+This file can be imported in Java IDEs in order to have an standard set of format rules.

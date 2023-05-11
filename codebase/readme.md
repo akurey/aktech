@@ -17,7 +17,3 @@ The Susy framework is a lightweight SASS gridding system that allows a great amo
 # [Java Micronaut](https://github.com/akurey/aktech/tree/micronaut-boilerplate/codebase/java-micronaut)
 
 Boilerplate that can be used to start a backend API using microservices. It is using Java as base language and Micronaut as the main framework.
-
-# [Java Code Formatter](https://github.com/akurey/aktech/tree/micronaut-boilerplate/codebase/java-micronaut)
-
-This file can be imported in Java IDEs in order to have an standard set of format rules.
