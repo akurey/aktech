@@ -37,6 +37,7 @@ when choosing a broker you should consider a few things:
 
 > msc. rodrigo nunez
 
-## [Java Code Formatter](https://github.com/akurey/aktech/blob/master/tech-tips/java/intellij-format.xml)
+## Java Code Formatter
 
 This file can be imported in Java IDEs in order to have an standard set of format rules.
+https://github.com/akurey/aktech/blob/master/tech-tips/java/intellij-format.xml
