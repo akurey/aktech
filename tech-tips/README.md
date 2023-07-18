@@ -1,15 +1,15 @@
-# tech tips 
+# tech tips
 
-find in this section technical tips in different fields of software engineering and production in akurey. 
+find in this section technical tips in different fields of software engineering and production in akurey.
 
+# [prompts](https://github.com/akurey/aktech/blob/master/tech-tips/prompts.md)
 
-# [general](https://github.com/akurey/aktech/blob/master/tech-tips/general.md) 
+# [general](https://github.com/akurey/aktech/blob/master/tech-tips/general.md)
 
-# [qa](https://github.com/akurey/aktech/blob/master/tech-tips/qa.md) 
+# [qa](https://github.com/akurey/aktech/blob/master/tech-tips/qa.md)
 
-# [mobile](https://github.com/akurey/aktech/blob/master/tech-tips/mobile.md) 
+# [mobile](https://github.com/akurey/aktech/blob/master/tech-tips/mobile.md)
 
-# [frontend](https://github.com/akurey/aktech/blob/master/tech-tips/frontend.md) 
+# [frontend](https://github.com/akurey/aktech/blob/master/tech-tips/frontend.md)
 
-# [backend](https://github.com/akurey/aktech/blob/master/tech-tips/backend.md) 
-
+# [backend](https://github.com/akurey/aktech/blob/master/tech-tips/backend.md)
