@@ -8,6 +8,8 @@ Fill the {placeholders} in order to adecuate your input.
 
 ### cooperative
 
+---
+
 **_target:_** teach a technique, method or procedure that requires multiple steps, layers, tools or strategies to be completed. The problem is splited into task, each person or subgroup resolve one single tab, then all together join the tasks to complete the solution. Each individual learn the basic task and learn how it integrate to build the solution.
 
 **_examples:_**
@@ -34,6 +36,8 @@ Each task must be completed in {amount of minutes} minutes. Provide me with tips
 
 ### collaborative
 
+---
+
 **_target:_** teach an experience, you want people to learn how to tackle a problem based on the experience and knowlegde of the whole team. People are provoked to conduct discussions. Ideas need to arise. The skills of the team need to be organized in order to get the most out of each individual. The final goal has to be achieved by the collaboration of all people. People are invited to provide ideas and defend their ideas, and to convince others.
 
 **_examples:_**
@@ -52,6 +56,8 @@ problem description: {problem or case description}
 The problem must be completed in {amount of time} minutes. Provide me with tips from experts in teaching using collaborative techniques. Provide only one version of the exercise description in an exciting manner. Do not include any extra tools requiring more time besides the mentioned above. Do not suggest to divide the team in groups, all of them have to work together.
 
 ### autonomous
+
+---
 
 **_target:_** Looking to transfer practices, knowledge, techniques, or experiences to individuals. This technique is important when the individual is required to acquire specific skills that they will perform themselves. Follow the principle of "learning by doing."
 
