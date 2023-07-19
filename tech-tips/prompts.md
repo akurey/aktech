@@ -67,7 +67,7 @@ The problem must be completed in {amount of time} minutes. Provide me with tips 
 - learn how to perform tasks in a specific tool
 - learn an algorithm
 
-- **_prompt:_**
+**_prompt:_**
 
 Write a technical exercise using the problem description bellow. Explain in the exercise to the reader that he has to follow the steps and each step might have support links with info to clarify how to perform the step but also is able to ask to the instructor. Describe the steps with more details and clarifications.
 
